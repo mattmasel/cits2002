@@ -1,12 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/* Generate tree as follows:
+
+            *****
+            ****
+            ***
+            **
+            *
+*/
+
 void get_tree(char *number)
 {
     int rows = atoi(number);
     for(int i = 0; i < rows; i++) {
         for(int j = 0; j < rows; j++) {
-            if(j < rows - i + 1) {
+            if(j >= rows - i) {
                 printf(" ");
             }
             else {
