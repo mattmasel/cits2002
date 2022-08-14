@@ -1,0 +1,2 @@
+Same hemisphere = lat 1 - lat 2
+Different hemisphere = lat 1 + lat 2
