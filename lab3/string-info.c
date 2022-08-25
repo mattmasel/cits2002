@@ -8,7 +8,15 @@
 // RETURN -1 IF s1 < s2, 0 if s1 = s2, 1 if s1 > s2
 int my_strcmp(char s1[], char s2[])
 {
-    return -1;
+    if(strcmp(s1, s2) < 0) {
+        return -1;
+    }
+    else if (strcmp(s1, s2) > 0) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
 }
 
 // MUST HAVE AT LEAST 2: UPPERCASE & LOWERCASE & DIGIT
@@ -47,12 +55,18 @@ int main(int argc, char *argv[])
     else {
 //  CALL THE PROCESS FUNCTION AND COLLECT THE RESULT
 //  Q1, Q2, Q3, ..., Qn
+
         int strlen = my_strlen(argv[1]);
 		bool issafe = is_safe(argv[1]);
+        
+        int compare_string = my_strcmp(argv[1], argv[2]);
+        
+        
 
 //  PRINT THE RESULT
         printf("The string length is: %d\n", strlen);
 		printf("%s\n", issafe ? "Strong password" : "Weak password");
+        printf("%d\n", compare_string);
 
 //  TERMINATE PROGRAM, INDICATING SUCCESS
         exit(EXIT_SUCCESS);
