@@ -94,7 +94,7 @@ int main(int argc, char *argv[])
 //  PRINT THE RESULT
         printf("The string length is: %d\n", strlen);
 		printf("%s\n", issafe ? "Strong password" : "Weak password");
-        printf("Palindrome?: %d\n", palindrome);
+        printf("Palindrome?: %s\n", palindrome ? "True" : "False");
 
 //  2 ARG FUNCTIONS 
         if(argc > 2) {
