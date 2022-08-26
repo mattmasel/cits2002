@@ -4,6 +4,32 @@
 #include <string.h>
 #include <ctype.h>
 
+//  CHECK IF STRING IS A PALINDROME 
+bool is_palindrome(char s[])
+{
+    int len = strlen(s);
+    int midpoint = len / 2;
+//  CHECK IF EVEN
+    if(len % 2 == 0) {
+        for(int i = 0; i < midpoint; i++) {
+            if(s[i] != s[len - 1 - i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+//  CHECK FOR ODD
+    else {
+        for(int i = 0; i <= midpoint; i++) {
+            if(s[i] != s[len - 1 - i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+    return false;
+}
+
 // DETERMINE IF s1 < = >  s2 LEXICO or ALPHANUM
 // RETURN -1 IF s1 < s2, 0 if s1 = s2, 1 if s1 > s2
 int my_strcmp(char s1[], char s2[])
@@ -25,7 +51,6 @@ bool is_safe(char s[])
     int upper, lower, digit;
     
     for(int i = 0; i < strlen(s); i++) {
-        
         if(isupper(s[i])) {
             upper++;
         }
@@ -36,14 +61,14 @@ bool is_safe(char s[])
             digit++;
         }
     }
-
 	return upper >= 2 && lower >= 2 && digit >= 2;
 }
 
+// RETURNS STRING LENGTH
 int my_strlen(char s[])
 {
 	return strlen(s);
-} 
+}
 
 int main(int argc, char *argv[])
 {
@@ -58,15 +83,23 @@ int main(int argc, char *argv[])
 
         int strlen = my_strlen(argv[1]);
 		bool issafe = is_safe(argv[1]);
-        
-        int compare_string = my_strcmp(argv[1], argv[2]);
-        
-        
+        bool palindrome = is_palindrome(argv[1]);
 
+//  2 ARG FUNCTIONS 
+        int compare_string;
+        if(argc > 2) {
+            compare_string = my_strcmp(argv[1], argv[2]);
+        }
+        
 //  PRINT THE RESULT
         printf("The string length is: %d\n", strlen);
 		printf("%s\n", issafe ? "Strong password" : "Weak password");
-        printf("%d\n", compare_string);
+        printf("Palindrome?: %d\n", palindrome);
+
+//  2 ARG FUNCTIONS 
+        if(argc > 2) {
+            printf("String value: %d\n", compare_string);
+        }
 
 //  TERMINATE PROGRAM, INDICATING SUCCESS
         exit(EXIT_SUCCESS);
