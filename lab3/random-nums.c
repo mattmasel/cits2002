@@ -9,16 +9,15 @@ int *insert_first(int item, int *array)
 //  INSERTION SORT VERSION TO FIND LARGEST
 int get_large(int *array)
 {
-    for(int i = 0; i < 9; i++) {
-        for(int j = i + 1; j < 10; j++) {
-            if(array[i] > array[j]) {
-                int temp = array[j];
-                array[j] = array[i];
-                array[i] = temp;
+    int largest;
+    for(int i = 0; i < 10; i++) {
+        for(int j = i; j < 10; j++) {
+            if(array[i] > array[j] && array[i] > largest) {
+                largest = array[i];
             }
         }
     }
-    return array[9];
+    return largest;
 }
 
 int *randomize(int *array)
