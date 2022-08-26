@@ -1,7 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//  INSERTION SORT 
+//  FUNC TO ADD LARGEST TO ELE 0 AND PUSH OTHER ELE DOWN ARRAY
+int *insert_first(int item, int *array)
+{
+    return array;
+}
+//  INSERTION SORT VERSION TO FIND LARGEST
 int get_large(int *array)
 {
     for(int i = 0; i < 9; i++) {
@@ -39,9 +44,8 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
     else {
-        int *random_numbers;
         int array[10]; 
-        random_numbers = randomize(array);
+        int *random_numbers = randomize(array);
 //  PRINT ALL NUMBERS
         for(int i = 0; i < 10; i++) {
             printf("%i. %i\n", i + 1, random_numbers[i]);
@@ -49,6 +53,12 @@ int main(int argc, char *argv[])
 //  PRINT LARGEST NUMBER
         int largest = get_large(array);
         printf("\nLargest number: %d\n", largest);
+
+//  PRINT REORDERED ARRAY
+        int *final_array = insert_first(largest, array);
+        for(int i = 0; i < 10; i++) {
+            printf("Final order: %d\n", final_array[i]);
+        }
     
         exit(EXIT_SUCCESS);
     }
