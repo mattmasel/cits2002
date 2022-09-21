@@ -4,17 +4,15 @@
 
 int *maximum_a(int values[], int n)
 {
-    int max = INT_MIN;
-    int *pmax;
+    int *p_max = &values[0];
 
     for(int i = 0; i < n; i++) {
-        if(values[i] > max) {
-            max = values[i];
-            pmax = &values[i];
+        if(values[i] > *p_max) {
+            p_max = &values[i];
         }
     }
-    
-    return pmax;
+
+    return p_max;
 }
 
 int main(int argc, char *argv[])
