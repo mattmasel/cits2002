@@ -31,7 +31,6 @@ int main(int argc, char *argv[])
         for(int i = 0; i < n; i++) {
             values[i] = atoi(argv[i + 1]);
         }
-        
         //  RETURNS POINTER TO MAX INT IN ARRAY
         int *max_int = maximum_a(values, n);
         
