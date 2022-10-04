@@ -48,7 +48,41 @@ int strncmp_p(char *s1, char *s2, size_t n)
     return *s2 - *s1;
 }
 
-char *strchr(char *str, int c)
+//  STRCHR - RETURNS FIRST OCCURANCE OF C
+char *strchr(char *s, int c)
 {
-    return str;
+    while(*s != '\0' && *s != c) {
+        s++;
+    }
+    return s;
+}
+
+//  STRRCHR - RETURNS LAST OCCURANCE OF C
+char *strrchr(char *s, int c)
+{
+    char *target = NULL;
+    while(*s != '\0') {
+        if(*s == c) {
+            target = s;
+        }
+        s++;
+    }
+    return target;
+}
+
+//  STRPBRK - SEARCH STRING FOR AN
+char *strpbrk(char *s, char *accept)
+{
+    char *target = accept;
+    while(*s != '\0') {
+        while(*target != '\0') {
+            if(*s == *target) {
+                return s;
+            }
+            target++;
+        }
+        target = accept;
+        s++;
+    }
+    return NULL;
 }
