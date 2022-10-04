@@ -15,12 +15,13 @@ int main (int argc, char *argv[])
         printf("%s\n", str2);
         printf("strlen_p:   %i\n", strlen_p(str2));
         puts("");
-        //printf("strcat_p:   %s\n", strcat_p(str2, str1));
+
+        printf("strstr:     %s\n", strstr(str1, str2));
         //printf("strcmp:     %d\n", strcmp_p(str1, str2));
         printf("strpbrk:    %c\n", *strpbrk(str1, str2));
         printf("strncmp:    %d\n", strncmp_p(str1, str2, 3));
         printf("strchr:     %c\n", *strchr(str1, 'a'));
-        printf("strrchr:    %c\n", *strrchr(str2, 'l'));
+
         exit(EXIT_SUCCESS);
     }
     return 0;

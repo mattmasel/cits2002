@@ -86,3 +86,30 @@ char *strpbrk(char *s, char *accept)
     }
     return NULL;
 }
+
+//  STRSTR - FIND FIRST OCCURANCE OF NEEDLE IN HAYSTACK
+char *strstr(char *haystack, char *needle)
+{
+    char *target = needle;
+    char *found = haystack;
+    
+    while(*haystack != '\0') {
+        while(*target != '\0') {
+            if(*haystack == *target) {
+                found = haystack;
+                while(*haystack == *target) {
+                    target++;
+                    haystack++;
+                    if(*target == '\0') {
+                        return found;
+                    }
+                }
+            }
+            target++;
+        }
+        target = needle;
+        haystack++;
+    }
+
+    return NULL;
+}
