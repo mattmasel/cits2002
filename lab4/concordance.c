@@ -5,14 +5,19 @@
 #include <string.h>
 #include <ctype.h>
 
-char **words    = NULL;
+struct {
+    char    *word;
+    int     count;
+} *words = NULL; 
+
+//char **words    = NULL;
 int n_words     = 0;
 
 //  PRINT CONCORDANCE ARRAY
-void print_concordance()
+void print_concordance(void)
 {
     for(int i = 0; i < n_words; i++) {
-        puts(words[i]);
+        printf("%i %s\n", words[i].count, words[i].word);
     }
 }
 
@@ -20,12 +25,17 @@ void print_concordance()
 void add_word(char word[])
 {
     for(int i = 0; i < n_words; i++) {
-        if(!strcmp(word, words[i])) {
+        if(!strcmp(word, words[i].word)) {
+            words[i].count++;
             return;
         }
     }
     words = realloc(words, (n_words + 1) * sizeof words[0]);
-    words[n_words++] = strdup(word);
+    
+    words[n_words].word     = strdup(word);
+    words[n_words].count    = 1; 
+    
+    n_words++;
 }
 
 //  SPLIT LINE INTO WORDS
@@ -82,6 +92,6 @@ int main (int argc, char *argv[])
 
         exit(EXIT_SUCCESS);
     }
-    
+
     return 0;
 }
