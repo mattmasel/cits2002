@@ -73,11 +73,11 @@ void extract_file(FILE *fp)
 
 int main (int argc, char *argv[])
 {
-    if(argc != 2) {
+    if(argc > 2) {
         printf("Usage: %s <filepath>\n", argv[0]);
         exit(EXIT_FAILURE);
     }
-    else {
+    if(argc > 1) {
         FILE *fp = fopen(argv[1], "r");
         
         if(fp == NULL) {
@@ -87,11 +87,14 @@ int main (int argc, char *argv[])
         
         extract_file(fp);
         fclose(fp);
-
-        print_concordance();
-
-        exit(EXIT_SUCCESS);
     }
-
+    
+    else {
+        extract_file(stdin);
+    }
+    
+    print_concordance();
+    exit(EXIT_SUCCESS);
+    
     return 0;
 }
