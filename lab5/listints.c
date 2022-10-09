@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-int numbers[BUFSIZ];
+int numbers[1000];
 int n = 0;
 
 void print_list(void)
