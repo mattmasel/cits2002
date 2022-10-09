@@ -2,24 +2,37 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-int *numbers = NULL;
+int numbers[BUFSIZ];
 int n = 0;
 
-void print_numbers(void)
+void print_list(void)
 {
-    printf("Placeholder for final number array\n");
+    for(int i = 1; numbers[i] != 0; i++) {
+        printf("%i\n", numbers[i]);
+    }
 }
 
-char *find_number(char *)
+char *next_number(char *str)
+{
+    if(*str == ',') {
+        return ++str;
+    }
+    return str;
+}
 
 void extract_numbers(char *str)
 {
     char *s = str;
-    //int max = -1, length = 0;
+
     while(*s) {
         if(isdigit(*s)) {
-            printf("%c\n", *s);
+            int number = *s - 48;
+            numbers[number] = number;
             s++;
+        }
+        else {
+            s = next_number(s);
+
         }
     }
     
@@ -33,7 +46,7 @@ int main(int argc, char *argv[])
     }
 
     extract_numbers(argv[1]);
-    print_numbers();
+    print_list();
     exit(EXIT_SUCCESS);
 
     return 0;
