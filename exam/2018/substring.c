@@ -9,7 +9,6 @@ bool subString(char *haystack, char *needle)
     if(strlen(needle) > strlen(haystack)) {
         return false;
     }
-
     while(haystack) {
         while(needle) {
             if(*haystack == *needle) {
@@ -23,7 +22,6 @@ bool subString(char *haystack, char *needle)
         }
         haystack++;
     }
-
     return false;
 }
 
